@@ -1,0 +1,21 @@
+@use "./../scss/base";
+@use './../scss/mixins';
+
+// making use of nesting
+
+.header {
+    @include mixins.background_theme(#000);
+    margin-bottom: 20px;
+
+
+    a, h1 {
+        color:base.$color-white;
+    }
+    a {
+        text-decoration: none;
+
+        &:hover { // the & presents the a so that we dont write it again-
+            text-decoration: underline;
+        }
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "books": [
+        {
+            "id": 1,
+            "volumeInfo": {
+                "title": "The Google story",
+                "authors": ["David A. Vise", "Mark Malseed"],
+                "publisher": "Random House Digital, Inc.",
+                "publishedDate": "2005-11-15",
+                "description": "Here is the story behind one of the most remarkable Internet successes of our time. Based on scrupulous research and extraordinary access to Google"
+            },
+            "price": 9.99
+        },
+        {
+            "id": 2,
+            "volumeInfo": {
+                "title": "The Twitter story",
+                "authors": "",
+                "publisher": "Random House Digital, Inc.",
+                "publishedDate": "2005-11-15",
+                "description": "\"Here is the story behind one of the most remarkable Internet successes of our time. Based on scrupulous research and extraordinary access to Google, ..."
+            },
+            "price": ""
+        },
+        {
+            "id": 3,
+            "volumeInfo": {
+                "title": "The Instagram story",
+                "authors": ["David A. Vise","Mark Malseed" ],
+                "publisher": "Random House Digital, Inc.",
+                "publishedDate": "2005-11-15",
+                "description": ""
+            },
+            "price": 29.99
+        }
+    ]
+}

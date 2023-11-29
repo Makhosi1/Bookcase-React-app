@@ -1,0 +1,7 @@
+@use"./components/scss/mixins";
+@use "./components/scss/base";
+
+
+footer {
+    @include mixins.background_theme(base.$primary-color);
+}
