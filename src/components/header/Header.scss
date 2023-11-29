@@ -6,6 +6,19 @@
 .header {
     @include mixins.background_theme(#000);
     margin-bottom: 20px;
+    animation-name: backgroundChange;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 2;
+    animation-fill-mode: forwards;
+
+    h1 {
+        transform: translate(0);
+        animation-name: textMovement;
+        animation-duration: 6s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate-reverse;
+    }
 
 
     a, h1 {
@@ -18,4 +31,32 @@
             text-decoration: underline;
         }
     }
+}
+
+// this creates the animation rules
+@keyframes backgroundChange {
+    from {background: black;}
+    to {background: rgb(201, 120, 235);}
+}
+
+@keyframes textMovement {
+    0%{
+        transform: translate(0);
+    }
+    20%{
+        transform: translate(100px);
+    }
+    40%{
+        transform: translate(200px);
+    }
+    60%{
+        transform: translate(400px);
+    }
+    80%{
+        transform: translate(400px);
+    }
+    100%{
+        transform: translate(0);
+    }
+    
 }

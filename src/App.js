@@ -126,7 +126,7 @@ function App() {
     <React.Fragment>
       <Header/>
       <Search searchValue={keyword} setSearchValue={setKeyword} searchBooks={findBooks} />
-      {showAddBookForm ? <AddBookForm /> : <button onClick ={() => setShowAddBookForm(true)}> Add New Book</button> }
+      {showAddBookForm ? <AddBookForm /> : <button className="add-new-book" onClick ={() => setShowAddBookForm(true)}> Add New Book</button> }
     < BookList books={books}  />
     < Footer />
     </React.Fragment>

@@ -1,7 +1,7 @@
 {
   "name": "mybooklibrary",
   "version": "0.1.0",
-  "homepage": "http://{github-Makhosi1}.github.io/{Bookcase-React-app}",
+  "homepage": "http://Makhosi1.github.io/Bookcase-React-app",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -17,11 +17,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "predeploy" : "npm run build",
     "deploy" : "gh-pages -d build",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+    
   },
   "eslintConfig": {
     "extends": [

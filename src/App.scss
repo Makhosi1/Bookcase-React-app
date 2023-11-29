@@ -5,3 +5,23 @@
 footer {
     @include mixins.background_theme(base.$primary-color);
 }
+
+.add-new-book{
+    //transform: translate(10px 20px);
+    //transform: rotate(20deg);  // this will rotate your element, +ve number is clockwised direction and -ve number is anti-clockwise direction
+    background-color: rgb(123, 72, 123);
+    font-weight: bold;
+    width: 10%;
+    height: 50px;
+    border-radius: 20px;
+    transition-property: background, color;
+    transition-duration: 0.7s;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.add-new-book:hover {
+    //transform: skew(30deg);
+    //transform: scaleX(5);
+    background: pink;
+    color: white;
+}
