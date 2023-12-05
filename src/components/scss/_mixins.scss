@@ -1,0 +1,17 @@
+@use "./base";
+
+@mixin background_theme($background_color) {
+    background: $background_color;
+    color:#fff;
+    padding: base.$spacing-small;
+
+}
+
+@mixin button_theme($background_color, $color) {
+    background-color: $background_color;
+    color: $color;
+    border-radius: 20px;
+    border: none;
+    padding : base.$spacing-small;
+    font-weight: 900;
+}

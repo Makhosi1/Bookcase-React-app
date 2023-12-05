@@ -1,167 +1,102 @@
-
-import React, { useState } from "react";
-import Book from "./components/book/book";
-import data from "./models/books.json";
+import React, { useEffect, useState } from "react";
+//import data from "./models/books.json";
 import { BookList } from "./components/book_list/BookList";
 import Header from "./components/header/Header";
 import Search from "./components/search/Search";
 import AddBookForm from "./components/newbookform/newBookForm";
-import "./App.scss" ;
+import "./App.scss";
 import Footer from "./components/footer/footer";
-
-/*
-function ParentComponent(props) {
-  return (
-    <div>{props.children}
-    </div>
-  )
-}
-
-function ChildComponent() {
-  return <h1> I am a child component</h1>
-}
-
-export  function AnyComponent() {
-  <ParentComponent>
-    <ChildComponent />
-     <p> This is a paragraph</p>
-     <a href="">Click me</a>
-  </ParentComponent>
-}
-*/
-
-/*function GenericButton(props) {
-  return <button style={props.style}>{props.children}</button>
-}
-
-export function PrimaryButton(props) {
-  return (
-  <GenericButton
-    style={{
-      backgroundColor: "blue",
-      color: "white"
-    }}
-  >
-    {props.children}
-  </GenericButton>
-  )
-}
- export function DangerButton(props) {
-  return (
-    <GenericButton 
-    style ={{
-      backgroundColor: 'red', 
-      color: "white"
-    }}
-    >
-      {props.children}
-      </GenericButton>
-  )
- }
- */
+import Pagination from "./components/pagination/Pagination";
 
 function App() {
-  const [books, setBooks] = useState(data.books);
-  const [keyword, setKeyword] = useState("");
-  const [showAddBookForm, setShowAddBookForm]= useState(false);
+  const [keyword, setKeyword] = useState("tech");
+  const [showAddBookForm, setShowAddBookForm] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(2);
+  const [totalBooks, setTotalBooks] = useState(0);
+  const [books, setBooks] = useState([[], []]);
 
-  /*
-  function addBook(t){
-    console.log(t);
-}
-*/
-//the way below (arrow function) is another way to write the above function
 
-  const addBook = () => {
-  // create a new book
-  console.log('here');
-  const newBook = {
-    id: 4,
-    volumeInfo: {
-      title: "Badass Habits",
-      authors: ['Jen Something'],
-      publisher: "Random House Digital, Inc.",
-     publishedDate: "2005-11-15",
-      description: " hello world Makhosi is practising react ",
-    },
-    price: 15.99
+  const flattenArray = (arr) => {
+    return [].concat(...arr)
   }
-  
 
-  //this code below allows us to assign the id to take the next ID number after the last book instead of adding ID everytime
-  const lastBook = books[books.length - 1]
-  newBook.id =  lastBook.id + 1
-  
- 
+  const chunkArray = (books, itemsPerPage) => {
 
-  // update books state using setBooks (setBooks is used )
-  setBooks(prevBooks => [...prevBooks, newBook]);
- 
- }
- 
- 
-  /*const findBooks = async (value) => {
-    const results = await 
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${value}&filter=paid-ebooks&print-type=books&projection=lite`)
-    .then(response => response.json());
+    // flatten array
+    books = flattenArray(books)
 
-    if(!results.error) {
-      setBooks(results.item);
-    }
-    console.log(value);
+    // chunk array 
+    return books.reduce((prevArray, currentBook, index) => {
+      const chunkIndex = Math.floor(index/itemsPerPage); // 1
+
+      if (!prevArray[chunkIndex]) {
+        prevArray[chunkIndex] = []
+      }
+
+      prevArray[chunkIndex].push(currentBook);
+      return prevArray
+    }, [])
   }
-  */
 
-  const findBooks = async (value, startIndex) => {
-    const results = await
-      fetch(`https://www.googleapis.com/books/v1/volumes?q=${value}&filter=paid-ebooks&print-type=books&projection=lite`)
-      .then(response => response.json());
+  const findBooks = async () => {
+    const results = await fetch(
+      `https://www.googleapis.com/books/v1/volumes?q=${keyword}&filter=paid-ebooks&print-type=books&projection=lite`
+    ).then((response) => response.json());
 
     if (!results.error) {
-      setBooks(results.items);
+      setTotalBooks(results.items.length);
+      setCurrentPage(0)
+      setBooks(chunkArray(results.items, itemsPerPage))
     }
-  }
+  };
+
+  useEffect(() => {
+    findBooks();
+  }, []);
 
   return (
     <React.Fragment>
-      <Header/>
-      <Search searchValue={keyword} setSearchValue={setKeyword} searchBooks={findBooks} />
-      {showAddBookForm ? <AddBookForm /> : <button className="add-new-book" onClick ={() => setShowAddBookForm(true)}> Add New Book</button> }
-    < BookList books={books}  />
-    < Footer />
+      <Header />
+      <Search
+        searchValue={keyword}
+        setSearchValue={setKeyword}
+        searchBooks={findBooks}
+      />
+      <select onChange={(event) => {
+        const value = event.target.value;
+
+        setItemsPerPage(value)
+        setCurrentPage(0)
+        setBooks(chunkArray(books, value))
+      }}>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>10</option>
+      </select>
+      {showAddBookForm ? (
+        <AddBookForm />
+      ) : (
+        <button
+          className="add-new-book"
+          onClick={() => setShowAddBookForm(true)}
+        >
+          {" "}
+          Add New Book
+        </button>
+      )}
+      <BookList books={books[currentPage]} />
+      <Pagination
+        nPages={totalBooks}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        itemsPerPage={itemsPerPage}
+      />
+      <Footer />
     </React.Fragment>
   );
-  }
+}
 // React.Fragment can be used as <> </> as a short form
 
-
-
 export default App;
-
-
-
- 
-/*
- (backend stuff i dont need yet)
- await setTimeout(() => {
-    console.log('ready to download')
-  }, 1000);
-  writeToFile(books)
-
-const writeToFile = async (books) => {
-  const outputData = {
-    books: books
-  }
-
-  const jsonString = JSON.stringify(outputData)
-
-  const blob = new Blob([jsonString],{type:'application/json'})
-  const href = await URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = href;
-  link.download = "newBooks.json";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
-*/

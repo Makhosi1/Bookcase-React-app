@@ -3,8 +3,11 @@
 
 // making use of nesting
 
+body {
+    background-color: base.$background-color;
+}
 .header {
-    @include mixins.background_theme(#000);
+    @include mixins.background_theme(#4f2a5e);
     margin-bottom: 20px;
     animation-name: backgroundChange;
     animation-duration: 4s;
@@ -35,7 +38,7 @@
 
 // this creates the animation rules
 @keyframes backgroundChange {
-    from {background: black;}
+    from {background: #4f2a5e;}
     to {background: rgb(201, 120, 235);}
 }
 

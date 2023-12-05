@@ -8,7 +8,9 @@ export default function ContactUs() {
     const [name, setName] = useState("");
     const [email, setEmail]= useState("");
     const [message, setMessage] = useState("");
-    const [hasSubmitted, setHasSubmitted] =useState(false);
+    const [messageTitle, setMessageTitle] = useState("");
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -40,6 +42,14 @@ export default function ContactUs() {
                     />
                 </label>
                 <label>
+                    Message Title
+                    <input
+                    type ="text"
+                    value={messageTitle}
+                    onChange ={e => setMessageTitle(e.target.value)}
+                    />
+                </label>
+                <label>
                     Message
                     <input
                     type = "textarea"
@@ -48,7 +58,7 @@ export default function ContactUs() {
                     />
                 </label>
                 
-                <button type = "submit"> Submit  </button>
+                <button id="submit" type = "submit"> Submit  </button>
                 
             </form>}
             <Footer />

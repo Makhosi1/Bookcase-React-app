@@ -6,6 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ContactUs from './pages/Contact';
 import { BookList } from './components/book_list/BookList';
+import AboutUs from './pages/About';
 //import { AnyComponent } from './App';
 //import { PrimaryButton } from './App';
 //import { DangerButton } from './App';
@@ -20,8 +21,8 @@ const routerProps = createBrowserRouter([
     element: <ContactUs />
   },
   {
-    path: "/",
-    element: <BookList/>
+    path: "/aboutus",
+    element: <AboutUs />
   }
 ])
 

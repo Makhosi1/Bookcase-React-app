@@ -7,7 +7,7 @@ export default function Header(){
             <h1>My Bookcase</h1>
             <Link to= "/">Home</Link>&emsp;
             <Link to= "/contact">Contact</Link>&emsp;
-            <Link to= "/bookcase">Bookcase</Link>
+            <Link to= "/aboutus">About Us</Link>
         </div>
     )
 }

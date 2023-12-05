@@ -1,27 +1,27 @@
+
+@use "./../components/scss/mixins.scss";
+
 .contact-form{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 
-    /*text-area {
+    textarea {
         width: 100px;
         height: 100px;
     }
-    */
+    
     label {
         font-weight: bold;
         margin: 20px;
     }
-    input, text-area {
-        width: 50%;
-        height: 20px; 
+    input, textarea {
+        //width: 50%;
+        //height: 20px; 
         margin-left: 10px;
     }
-    button {
-        padding: 10px;
-        width: 100px;
-        margin: 20px;
-        border-radius: 20px;
+   #submit  {
+       @include mixins.button_theme(rgb(219, 152, 229), black)
     }
 
 }

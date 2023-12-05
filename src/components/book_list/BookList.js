@@ -1,6 +1,6 @@
 import Book from "../book/book";
 
-export function BookList({ books, addBookEventHandler }) {
+export function BookList({ books }) {
     if (books.length === 0) {
         return <h1>No Books</h1>
     }
