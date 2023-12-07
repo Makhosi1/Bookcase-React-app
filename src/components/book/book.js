@@ -22,7 +22,7 @@ function Book({ bookProps }) {
       </ul>
       <p>{description ? description : "No description Provided."}</p>
       <p>{price ? `£${price}` : "No Price Available"}</p>
-      {/*<button onClick ={() => addBook(title)}>Add + </button>*/}
+      
 
     </div>
   )
@@ -72,4 +72,5 @@ user = {
   ...user,
   age: 21
 }
+<button onClick ={() => addBook(title)}>Add + </button>
 */

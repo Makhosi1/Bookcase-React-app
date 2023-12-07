@@ -20,9 +20,9 @@
                 "authors": "",
                 "publisher": "Random House Digital, Inc.",
                 "publishedDate": "2005-11-15",
-                "description": "\"Here is the story behind one of the most remarkable Internet successes of our time. Based on scrupulous research and extraordinary access to Google, ..."
+                "description": "Here is the story behind one of the most remarkable Internet successes of our time. Based on scrupulous research and extraordinary access to Google, ..."
             },
-            "price": ""
+            "price": 10.99
         },
         {
             "id": 3,
@@ -31,7 +31,7 @@
                 "authors": ["David A. Vise","Mark Malseed" ],
                 "publisher": "Random House Digital, Inc.",
                 "publishedDate": "2005-11-15",
-                "description": ""
+                "description": "Here is the story behind one of the most remarkable Internet successes of our time. Based on scrupulous research and extraordinary access to Google, ..."
             },
             "price": 29.99
         }
